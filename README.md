@@ -1,6 +1,8 @@
 # cvefixer
 
-Fix CVEs. (Update your Linux computer's many little applications.)
+Fix all vulnerabilities that are fixed! This Rust app update your Linux
+computer's many little applications, including Rust crates, Flatpak packages,
+Bun, and more.
 
 # Requirements
 
@@ -33,7 +35,7 @@ Commands:
 # Configuration
 
 You can define hook scripts to be run by `cvefixer all` and `cvefixer hooks`,
-specified as follows in the JSON config file:
+specified as follows in a JSON config file:
 
 ```json
 {

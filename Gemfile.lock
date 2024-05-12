@@ -6,8 +6,13 @@ GEM
     benchmark (0.3.0)
     byebug (11.1.3)
     coderay (1.1.3)
+    concurrent-ruby (1.2.3)
     diff-lcs (1.5.1)
     e2mmap (0.1.0)
+    faraday (2.9.0)
+      faraday-net_http (>= 2.0, < 3.2)
+    faraday-net_http (3.1.0)
+      net-http
     jaro_winkler (1.5.6)
     json (2.7.2)
     kramdown (2.4.0)
@@ -17,6 +22,8 @@ GEM
     language_server-protocol (3.17.0.3)
     lint_roller (1.1.0)
     method_source (1.1.0)
+    net-http (0.4.1)
+      uri
     nokogiri (1.16.4-x86_64-linux)
       racc (~> 1.4)
     parallel (1.24.0)
@@ -95,6 +102,8 @@ GEM
     rubocop-rspec_rails (2.28.3)
       rubocop (~> 1.40)
     ruby-progressbar (1.13.0)
+    semantic_logger (4.15.0)
+      concurrent-ruby (~> 1.0)
     solargraph (0.50.0)
       backport (~> 1.2)
       benchmark
@@ -126,14 +135,19 @@ GEM
     stringio (3.1.0)
     thor (1.3.0)
     tilt (2.3.0)
+    tomlrb (2.0.3)
     unicode-display_width (2.5.0)
+    uri (0.13.0)
     yard (0.9.36)
 
 PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  faraday (~> 2.9)
   peppermint (~> 0.1.10)
+  semantic_logger (~> 4.15)
+  tomlrb (~> 2.0)
 
 BUNDLED WITH
    2.4.19
