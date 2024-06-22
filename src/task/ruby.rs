@@ -15,7 +15,6 @@ pub fn update() -> Result<(), Error> {
                 .arg("origin"),
         )?;
         exec(Command::new("gem").args(["update", "--system"]))?;
-        exec(Command::new("gem").arg("update"))?;
     }
     Ok(())
 }
