@@ -1,7 +1,7 @@
 use log::debug;
 
 use crate::errors::Error;
-use std::process::{Command, Stdio};
+use std::process::{Command};
 use which::which;
 
 pub fn exec(cmd: &mut Command) -> Result<(), Error> {
