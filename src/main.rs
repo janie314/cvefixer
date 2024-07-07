@@ -1,5 +1,5 @@
 use clap::{Parser, Subcommand};
-use config::read_config;
+use config::{read_config, Config};
 use log::{info, LevelFilter};
 use std::env;
 use task::{bun, deno, flatpak, hooks, os, ruby, rust};
@@ -39,6 +39,17 @@ enum Commands {
     Test {},
 }
 
+fn run_hooks(config: Option<Config>) {
+    match config {
+        Some(config) => {
+            hooks::update(config).expect("there was an issue");
+        }
+        None => {
+            info!("no hooks configured");
+        }
+    }
+}
+
 fn main() {
     match env::var("RUST_LOG") {
         Ok(_) => pretty_env_logger::init(),
@@ -58,6 +69,7 @@ fn main() {
                 bun::update().expect("there was an issue");
                 ruby::update().expect("there was an issue");
                 flatpak::update().expect("there was an issue");
+                run_hooks(config);
             }
             Commands::Bun {} => {
                 bun::update().expect("there was an issue");
@@ -68,14 +80,7 @@ fn main() {
             Commands::Flatpak {} => {
                 flatpak::update().expect("there was an issue");
             }
-            Commands::Hooks {} => match config {
-                Some(config) => {
-                    hooks::update(config).expect("there was an issue");
-                }
-                None => {
-                    info!("no hooks configured");
-                }
-            },
+            Commands::Hooks {} => run_hooks(config),
             Commands::OS {} => {
                 os::update().expect("there was an issue");
             }
