@@ -1,8 +1,0 @@
-on: [push]
-jobs:
-  check:
-    name: Syntax Check
-    runs-on: rusty-forgejo
-    steps:
-      - uses: https://github.com/actions/checkout@v4
-      - run: cargo check

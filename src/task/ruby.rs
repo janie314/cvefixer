@@ -14,6 +14,16 @@ pub fn update() -> Result<(), Error> {
                 .arg("pull")
                 .arg("origin"),
         )?;
+    }
+    let path = Path::new(&home).join(".rbenv/plugins/ruby-build");
+    if path.is_dir() {
+        exec(
+            Command::new("git")
+                .arg("-C")
+                .arg(&path)
+                .arg("pull")
+                .arg("origin"),
+        )?;
         exec(Command::new("gem").args(["update", "--system"]))?;
     }
     Ok(())

@@ -1,0 +1,16 @@
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    name: testing and linting this branch
+    steps:
+    - name: check out this repo
+      uses: actions/checkout@v4
+    - name: setup rust
+      uses: https://github.com/moonrepo/setup-rust
+    - run: cargo build
+    - run: cargo fmt --check

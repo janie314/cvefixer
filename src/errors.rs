@@ -2,41 +2,41 @@
 #[derive(Debug)]
 pub enum Error {
     CouldNotDetermineOS,
-    DateParse(time::error::Parse),
-    EnvVar(std::env::VarError),
-    IO(std::io::Error),
-    JSON(serde_json::Error),
+    DateParse,
+    EnvVar,
+    IO,
+    JSON,
     NonZeroExitStatus,
-    Utf8String(std::string::FromUtf8Error),
+    Utf8String,
     UnsupportedOS,
 }
 
 impl From<std::io::Error> for Error {
-    fn from(e: std::io::Error) -> Self {
-        Error::IO(e)
+    fn from(_e: std::io::Error) -> Self {
+        Error::IO
     }
 }
 
 impl From<time::error::Parse> for Error {
-    fn from(e: time::error::Parse) -> Self {
-        Error::DateParse(e)
+    fn from(_e: time::error::Parse) -> Self {
+        Error::DateParse
     }
 }
 
 impl From<std::string::FromUtf8Error> for Error {
-    fn from(e: std::string::FromUtf8Error) -> Self {
-        Error::Utf8String(e)
+    fn from(_e: std::string::FromUtf8Error) -> Self {
+        Error::Utf8String
     }
 }
 
 impl From<std::env::VarError> for Error {
-    fn from(e: std::env::VarError) -> Self {
-        Error::EnvVar(e)
+    fn from(_e: std::env::VarError) -> Self {
+        Error::EnvVar
     }
 }
 
 impl From<serde_json::Error> for Error {
-    fn from(e: serde_json::Error) -> Self {
-        Error::JSON(e)
+    fn from(_e: serde_json::Error) -> Self {
+        Error::JSON
     }
 }
