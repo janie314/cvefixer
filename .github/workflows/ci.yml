@@ -11,6 +11,6 @@ jobs:
     - name: check out this repo
       uses: actions/checkout@v4
     - name: setup rust
-      uses: https://github.com/moonrepo/setup-rust
+      uses: moonrepo/setup-rust@v1
     - run: cargo build
     - run: cargo fmt --check
