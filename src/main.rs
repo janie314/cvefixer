@@ -71,6 +71,7 @@ fn main() {
                 bun::update().expect("there was an issue");
                 ruby::update().expect("there was an issue");
                 flatpak::update().expect("there was an issue");
+                uv::update().expect("there was an issue");
                 run_hooks(config);
             }
             Commands::Bun {} => {
