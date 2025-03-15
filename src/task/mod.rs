@@ -5,3 +5,4 @@ pub mod hooks;
 pub mod os;
 pub mod ruby;
 pub mod rust;
+pub mod uv;
