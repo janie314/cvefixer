@@ -38,6 +38,10 @@ pub fn update() -> Result<(), Error> {
             exec(Command::new("sudo").args(["apt", "upgrade", "-y"]))?;
             exec(Command::new("sudo").args(["apt", "autoremove", "-y"]))?;
         }
+        OS::Alpine => {
+            info!("detected Alpine");
+            exec(Command::new("doas").args(["apk", "upgrade", "-U"]))?;
+        }
     }
     Ok(())
 }
@@ -47,6 +51,7 @@ enum OS {
     RHELLike,
     Gentoo,
     Ubuntu,
+    Alpine,
 }
 
 fn get_os() -> Result<OS, Error> {
@@ -64,6 +69,8 @@ fn get_os() -> Result<OS, Error> {
                     Ok(OS::Ubuntu)
                 } else if id.contains("gentoo") {
                     Ok(OS::Gentoo)
+                } else if id.contains("alpine") {
+                    Ok(OS::Alpine)
                 } else {
                     Err(Error::UnsupportedOS)
                 }
