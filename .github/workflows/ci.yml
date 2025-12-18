@@ -8,9 +8,9 @@ jobs:
     runs-on: ubuntu-latest
     name: testing and linting this branch
     steps:
-    - name: check out this repo
-      uses: actions/checkout@v6
-    - name: setup rust
-      uses: moonrepo/setup-rust@v1
-    - run: cargo build
-    - run: cargo fmt --check
+      - name: check out this repo
+        uses: actions/checkout@v6
+      - name: setup rust
+        uses: moonrepo/setup-rust@v1
+      - run: cargo build
+      - run: cargo fmt --check
