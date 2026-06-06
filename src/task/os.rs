@@ -63,7 +63,11 @@ fn get_os() -> Result<OS, Error> {
     match id {
         Some(id) => match id {
             Ok(id) => {
-                if id.contains("rhel") || id.contains("rocky") || id.contains("fedora") {
+                if id.contains("rhel")
+                    || id.contains("rocky")
+                    || id.contains("fedora")
+                    || id.contains("almalinux")
+                {
                     Ok(OS::RHELLike)
                 } else if id.contains("ubuntu") || id.contains("debian") {
                     Ok(OS::Ubuntu)
