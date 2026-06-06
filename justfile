@@ -1,6 +1,6 @@
 fmt:
     cargo fmt
-    find -name '*.json' -or -name '*.yml' -or -name '*.md' | grep -v '/target/' | xargs deno fmt
+    git ls-files | grep -E '\.(yml|md|json)$' | xargs deno fmt
 
 fix:
     just fmt
