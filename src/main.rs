@@ -2,7 +2,7 @@ use clap::{Parser, Subcommand};
 use config::{read_config, Config};
 use log::{info, LevelFilter};
 use std::env;
-use task::{bun, deno, flatpak, hooks, os, ruby, rust, uv};
+use task::{bun, deno, flatpak, hooks, llama, os, ruby, rust, uv};
 
 mod config;
 mod errors;
@@ -39,6 +39,8 @@ enum Commands {
     Test {},
     /// Update uv
     Uv {},
+    /// Update llama
+    Llama {},
 }
 
 fn run_hooks(config: Option<Config>) {
@@ -72,6 +74,7 @@ fn main() {
                 ruby::update().expect("there was an issue");
                 flatpak::update().expect("there was an issue");
                 uv::update().expect("there was an issue");
+                llama::update().expect("there was an issue");
                 run_hooks(config);
             }
             Commands::Bun {} => {
@@ -98,6 +101,9 @@ fn main() {
             }
             Commands::Uv {} => {
                 uv::update().expect("there was an issue");
+            }
+            Commands::Llama {} => {
+                llama::update().expect("there was an issue");
             }
         },
         None => (),
